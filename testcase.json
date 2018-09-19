@@ -1,0 +1,42 @@
+{"_id":{"$oid":"5b96534b70921d10ecf921d6"},"test_id":"t_Sum Of Two Numbers","testcase_no":"1","q_inp":"100 200","q_oup":"300"}
+{"_id":{"$oid":"5b98e3119db50b096c42d6e6"},"test_id":"t_Sum Of Two Numbers","testcase_no":"2","q_inp":"100 10000","q_oup":"10100"}
+{"_id":{"$oid":"5b9df1cde33d9c1a1ce2563f"},"test_id":"t_Sum Of Two Numbers","testcase_no":1,"q_inp":"8 9","q_oup":"17"}
+{"_id":{"$oid":"5ba1f059fe64ef15682884b3"},"test_id":"t_Sum Of Three Numbers","testcase_no":"1","q_inp":"10 20 30","q_oup":"60"}
+{"_id":{"$oid":"5ba1f0c0fe64ef15682884b4"},"test_id":"t_Sum Of Three Numbers","testcase_no":"2","q_inp":"90 20 10","q_oup":"120"}
+{"_id":{"$oid":"5ba1f2e5fe64ef15682884b5"},"test_id":"t_Pangrams","testcase_no":"1","q_inp":"We promptly judged antique ivory buckles for the prize","q_oup":"not pangram"}
+{"_id":{"$oid":"5ba1f34ffe64ef15682884b7"},"test_id":"t_Pangrams","testcase_no":"2","q_inp":"qmExzBIJmdELxyOFWv LOCmefk TwPhargKSPEqSxzveiun","q_oup":"pangram"}
+{"_id":{"$oid":"5ba1f392fe64ef15682884b8"},"test_id":"t_Sum Of Three Numbers","testcase_no":"3","q_inp":"1231 1231 800","q_oup":"3262"}
+{"_id":{"$oid":"5ba1f616fe64ef15682884b9"},"test_id":"t_Century From Year","testcase_no":"1","q_inp":"1700","q_oup":"17"}
+{"_id":{"$oid":"5ba1f64efe64ef15682884ba"},"test_id":"t_Century From Year","testcase_no":"2","q_inp":"2001","q_oup":"21"}
+{"_id":{"$oid":"5ba1f685fe64ef15682884bb"},"test_id":"t_Century From Year","testcase_no":"3","q_inp":"200","q_oup":"2"}
+{"_id":{"$oid":"5ba1f6a8fe64ef15682884bc"},"test_id":"t_Century From Year","testcase_no":"4","q_inp":"374","q_oup":"4"}
+{"_id":{"$oid":"5ba1f6e1fe64ef15682884bd"},"test_id":"t_Century From Year","testcase_no":"5","q_inp":"45","q_oup":"1"}
+{"_id":{"$oid":"5ba1f77cfe64ef15682884be"},"test_id":"t_Check Palindrome","testcase_no":"1","q_inp":"abac","q_oup":"false"}
+{"_id":{"$oid":"5ba1f7e0fe64ef15682884c0"},"test_id":"t_Check Palindrome","testcase_no":"2","q_inp":"a","q_oup":"true"}
+{"_id":{"$oid":"5ba1f82bfe64ef15682884c2"},"test_id":"t_Check Palindrome","testcase_no":"3","q_inp":"hlbeeykoqqqqokyeeblh","q_oup":"true"}
+{"_id":{"$oid":"5ba1f869fe64ef15682884c3"},"test_id":"t_Check Palindrome","testcase_no":"4","q_inp":"zzzazzazz","q_oup":"false"}
+{"_id":{"$oid":"5ba1f8acfe64ef15682884c4"},"test_id":"t_Adjacent Elements Product","testcase_no":"1","q_inp":"-1 -2","q_oup":"2"}
+{"_id":{"$oid":"5ba1f8ecfe64ef15682884c5"},"test_id":"t_Adjacent Elements Product","testcase_no":"2","q_inp":"5 1 2 3 1 4","q_oup":"6"}
+{"_id":{"$oid":"5ba1f921fe64ef15682884c6"},"test_id":"t_Adjacent Elements Product","testcase_no":"3","q_inp":"1 0 1 0 1000","q_oup":"0"}
+{"_id":{"$oid":"5ba1f984fe64ef15682884c8"},"test_id":"t_Adjacent Elements Product","testcase_no":"4","q_inp":"-23 4 -3 8 -12","q_oup":"-12"}
+{"_id":{"$oid":"5ba1fa5afe64ef15682884c9"},"test_id":"t_Birthday Choclate","testcase_no":"1","q_inp":"6 1 1 1 1 1 1 3 2","q_oup":"0"}
+{"_id":{"$oid":"5ba1fab5fe64ef15682884cb"},"test_id":"t_Birthday Choclate","testcase_no":"2","q_inp":"1 4 4 1","q_oup":"1"}
+{"_id":{"$oid":"5ba2005cfe64ef15682884cc"},"test_id":"t_Largest Number","testcase_no":"1","q_inp":"1","q_oup":"9"}
+{"_id":{"$oid":"5ba2008bfe64ef15682884cd"},"test_id":"t_Largest Number","testcase_no":"2","q_inp":"7","q_oup":"9999999"}
+{"_id":{"$oid":"5ba200b7fe64ef15682884ce"},"test_id":"t_Largest Number","testcase_no":"3","q_inp":"3","q_oup":"999"}
+{"_id":{"$oid":"5ba20128fe64ef15682884cf"},"test_id":"t_Candies","testcase_no":"1","q_inp":"1 2","q_oup":"2"}
+{"_id":{"$oid":"5ba2016bfe64ef15682884d0"},"test_id":"t_Candies","testcase_no":"2","q_inp":"10 5","q_oup":"0"}
+{"_id":{"$oid":"5ba2018cfe64ef15682884d1"},"test_id":"t_Candies","testcase_no":"3","q_inp":"4 4","q_oup":"4"}
+{"_id":{"$oid":"5ba2025ffe64ef15682884d2"},"test_id":"t_First Duplicate","testcase_no":"1","q_inp":"2 4 3 5 1","q_oup":"-1"}
+{"_id":{"$oid":"5ba2032cfe64ef15682884d3"},"test_id":"t_First Duplicate","testcase_no":"2","q_inp":"1","q_oup":"-1"}
+{"_id":{"$oid":"5ba20351fe64ef15682884d4"},"test_id":"t_First Duplicate","testcase_no":"3","q_inp":"2 2","q_oup":"2"}
+{"_id":{"$oid":"5ba20374fe64ef15682884d5"},"test_id":"t_First Duplicate","testcase_no":"4","q_inp":"3 3 3","q_oup":"3"}
+{"_id":{"$oid":"5ba203affe64ef15682884d6"},"test_id":"t_Remove From List","testcase_no":"1","q_inp":"3 1 2 3 4 5 3","q_oup":"1 2 4 5"}
+{"_id":{"$oid":"5ba20438fe64ef15682884d7"},"test_id":"t_Remove From List","testcase_no":"2","q_inp":"123 456 789 0","q_oup":"123 456 789"}
+{"_id":{"$oid":"5ba2049cfe64ef15682884d8"},"test_id":"t_Remove From List","testcase_no":"3","q_inp":"1000 1001 1000","q_oup":"1001"}
+{"_id":{"$oid":"5ba2050bfe64ef15682884d9"},"test_id":"t_Rotate Image","testcase_no":"1","q_inp":"10 9 6 3 7 6 10 2 9 7 7 6 3 8 2 8 9 7 9 9 6 8 6 8 2 ","q_oup":"6 8 7 6 10 8 9 6 10 9 6 7 3 2 6 8 9 8 9 3 2 9 2 7 7"}
+{"_id":{"$oid":"5ba20aabfe64ef15682884da"},"test_id":"t_First Not Repeating Character","testcase_no":"1","q_inp":"abacabaabacaba","q_oup":"_"}
+{"_id":{"$oid":"5ba20c57fe64ef15682884db"},"test_id":"t_First Not Repeating Character","testcase_no":"2","q_inp":"z","q_oup":"z"}
+{"_id":{"$oid":"5ba20ca9fe64ef15682884dc"},"test_id":"t_First Not Repeating Character","testcase_no":"3","q_inp":"bcb","q_oup":"c"}
+{"_id":{"$oid":"5ba20ccafe64ef15682884dd"},"test_id":"t_First Not Repeating Character","testcase_no":"4","q_inp":"bcccccccb","q_oup":"_"}
+{"_id":{"$oid":"5ba20cf6fe64ef15682884de"},"test_id":"t_First Not Repeating Character","testcase_no":"5","q_inp":"abcdefghijklmnopqrstuvwxyziflskecznslkjfabe","q_oup":"d"}
