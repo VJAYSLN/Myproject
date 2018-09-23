@@ -45,27 +45,46 @@ app.get('/login',function(req,res)
 }
 );
 
-// // --------------------------Render index_O----------------------------------
+// // --------------------------Render admin2---------------------------------
+app.post('/admin2',function(req,res)
+{
+    MongoClient.connect(url, function(err, db) 
+    {
+     if (err) throw err;
+    dbo = db.db("mydb");
+    t_id="t_"+req.body.qname;
+    q_name=req.body.qname;
+    q_const=req.body.qconst;
+    q_desc=req.body.qdesc;
+    sam_inp=req.body.qinp;
+    sam_oup=req.body.qoup;
+    var myobj1={'q_name':q_name,'q_desc':q_desc,'q_const':q_const,'q_inp':sam_inp,'q_oup':sam_oup,'test_id':t_id};
+    dbo.collection("question").insertOne(myobj1, function(err, res) {
+        if (err) throw err;
+        console.log("1 document inserted");     
+        db.close();
+    });
+    q_inp=req.body.inp;
+    q_oup=req.body.oup;
+    console.log(q_inp.length);
+    console.log(q_inp[1]);
+    console.log(q_inp[0]);
+    var j=1;
+  for(var i=q_inp.length-2;i>=0;i--)
+  {
+    var myobj = {'test_id':t_id,'testcase_no':j,'q_inp':q_inp[i],'q_oup':q_oup[i]};
+    dbo.collection("test_cases").insertOne(myobj, function(err, res) {
+    if (err) throw err;
+    console.log("1 document inserted");     
+     });
+     j=j+1;
+    }
+    db.close();
+    res.send("fine");
+    });
+});
 
-// MongoClient.connect(url, function(err, db) 
-// {
-//      if (err) throw err;
-// app.get('/',function(req,res)
-// {
-//  dbo = db.db("mydb");
-// dbo.collection("question").find({},{q_desc:0}).toArray(function(err, result) {
-//   if (err) throw err;
-//   console.log("Successful");
-//   console.log(result[1].q_name);
-//   db.close();
-//   res.render('pages/index_O', {
-//     result: result
-// });
 
-// });
-
-// });
-// });
 //-----------------------Register Details-----------------------------
 app.get('/reg',function(req,res)
 {
@@ -96,13 +115,17 @@ app.get('/ques_tab',function(req,res)
     {
      if (err) throw err;
     dbo = db.db("mydb");
+    name=req.query['name'];
+    email=req.query['email'];
     dbo.collection("question").find({},{q_desc:0}).toArray(function(err, result) {
         if (err) throw err;
         // console.log("Successful");
         // console.log(result[1].q_name);
          db.close();
         res.render('pages/question_tabs', {
-          result: result
+          result: result,
+          name:name,
+          email:email
       });
 });
 });
@@ -119,6 +142,9 @@ MongoClient.connect(url, function(err, db)
      if (err) throw err;
     dbo = db.db("mydb");
     ques_id=ObjectId(req.query['q_id']);
+    name=req.query['name'];
+    email=req.query['email'];
+    t_id=req.query["test_id"];
     console.log(ques_id);
     console.log('visited');
     dbo.collection("question").findOne({_id:ques_id}, function(err, result) {
@@ -128,7 +154,11 @@ MongoClient.connect(url, function(err, db)
       
     
     res.render('pages/index_O', {
-        result:result  
+        result:result,
+          t_id:t_id,
+          name:name,
+          email:email,
+          quest_id:ques_id
     });
 });
 });
@@ -143,7 +173,9 @@ MongoClient.connect(url, function(err, db)
 {
      if (err) throw err;
      obj=req.query['c_name'];
-     console.log(obj);
+     name=req.query['name'];
+    email=req.query['email'];
+     //console.log(obj);
      dbo = db.db("mydb");
      dbo.collection(obj).find({}).toArray(function(err, resultx) {
         if (err) throw err;
@@ -152,7 +184,9 @@ MongoClient.connect(url, function(err, db)
     
      res.render('pages/pgms', {
          resultz:resultx,
-         c_name:obj
+         c_name:obj,
+         name:name,
+         email:email
            
      });
   
@@ -170,6 +204,8 @@ MongoClient.connect(url, function(err, db)
      if (err) throw err;
     dbo = db.db("mydb");
     obj=req.query['c_name'];
+    name=req.query['name'];
+    email=req.query['email'];
     ques_id=ObjectId(req.query['q_id']);
     console.log(ques_id);
     console.log('visited');
@@ -180,9 +216,32 @@ MongoClient.connect(url, function(err, db)
         res.render("pages/practice_O",
         {
             result:result,
-            
+            name:name,
+            email:email
         });
     });
+});
+});
+
+//
+app.get('/feedback',function(req,res)
+{
+MongoClient.connect(url, function(err, db) 
+{
+     if (err) throw err;
+    name=req.query['name'];
+    email=req.query['email'];
+    feed=req.query['feed'];
+    console.log(name+" "+email+" "+feed);
+     dbo = db.db("mydb");
+    myobj={name:name,email:email,feed_msg:feed}
+    dbo.collection("feedback").insertOne(myobj, function(err, res) {
+        if (err) throw err;
+        console.log("1 document inserted"); 
+        db.close();
+    });
+    res.send('success');  
+
 });
 });
 
@@ -216,7 +275,17 @@ app.get("/success_css",function(req,res)
 {
     res.sendFile(__dirname + "/success_css/style.css");
 });
+
+
+app.get("/feedback_css",function(req,res)
+{
+    res.sendFile(__dirname + "/feedback_css/style.css");
+});
 // //-------------------------------------Js files------------------------------------
+app.get('/ace' ,function(req,res)
+{
+    res.sendfile(__dirname+'/src-noconflict/ace.js');
+});
 
 app.get('/amazon1' ,function(req,res)
 {
@@ -242,6 +311,10 @@ app.get('/amazon4' ,function(req,res)
 app.get("/js1",function(req,res)
 {
     res.sendFile(__dirname + "/js1/index.js");
+});
+app.get("/feedback_js",function(req,res)
+{
+    res.sendFile(__dirname + "/feedback_js/index.js");
 });
 app.get("/success_js",function(req,res)
 {
@@ -273,32 +346,34 @@ app.get('/imageq',function(req,res)
 
 /*----------------------------Compilex Started Here---------------------------------------------------*/
 app.post('/compil' , function (req , res ) {
-
+    var results=[];
+    var resultk={};
 MongoClient.connect(url, function(err, db) 
     {
-      if (err) throw err;
+    if (err) throw err;
     dbo = db.db("mydb");
     var code = req.body.code;	
 	var input = req.body.input;
-    var inputRadio = req.body.inputRadio;
     var lang = req.body.lang;
+    var ques_id=req.body.ques_id;
+    var q_mark=req.body.marks;
     var sam_oup=req.body.op;
-    var t_id="t_Sum Of Two Numbers"
-    var count=0;
-    console.log(t_id);
-    var query={"test_id":t_id};
+    var t_id1=req.body.t_id;
+  //  var t_id="t_Sum Of Two Numbers"
+    console.log(t_id1);
+    var query={"test_id":t_id1};
+
     dbo.collection("test_cases").find(query).toArray(function(err, test) {
         if (err) throw err;
          console.log("Founded"+test[0].test_id);
              db.close();
-            //  count=test.length-1;
-            
+          
              for(var i=0;i<test.length;i++)
              {
                 input=test[i].q_inp;
                 sam_oup=test[i].q_oup;
                 test_case_no=test[i].testcase_no;
-                // console.log(input+" "+sam_oup+" "+test_case_no);
+                
      if((lang === "C") || (lang === "C++"))
       {
                  
@@ -307,43 +382,39 @@ MongoClient.connect(url, function(err, db)
                
         		if(data.error)
         		{   
-                    count=1;
-                    res.render("pages/success_testcase",
-                    {
+                    resultk = {
+                        result1:data.error,
+                        result:data.oup,
+                        test_case:data.t_no,
+                        input:data.inp
+                        }
+                        results.push(resultk);
                         
-                     result1:data.error,
-                     result:data.oup,
-                     test_case:data.t_no,
-                     input:data.inp
-                     
-                     });
-                    
         		}
         		else
         		{
                     console.log(data.oup+" "+data.output);
                     var data1=data.output;
                     data1=data1.trim();
-                    if(data.oup!=data1)
-                       {
-                        count=1;
-        			res.render("pages/success_testcase",
+                    resultk = {
+                        result1:data1,
+                        result:data.oup,
+                        test_case:data.t_no,
+                        input:data.inp
+                            }
+                    results.push(resultk);
+                    console.log(results);
+                }
+           if(results.length==test.length)
+           {
+            res.render("pages/success_complete",
                     {
-                     result1:data1,
-                     result:data.oup,
-                     test_case:data.t_no,
-                     input:data.inp
-                     });
-                    
-                    console.log('inside checking1');
-                     
-                        }
-                    
-        		}
-        	
-            });
-        }
+                        out:results
+                    })
+           }
     
+                })
+    }
     if(lang === "Java")
     {
             var envData = { OS : "windows" };     
@@ -351,34 +422,36 @@ MongoClient.connect(url, function(err, db)
             compiler.compileJavaWithInput( envData , code ,input,sam_oup,test_case_no, function(data){
                 if(data.error)
                 {
-                    count=1;
-                res.render("pages/success_testcase",
-                {
-                 result1:data.error,
-                 result:data.oup,
-                 test_case:data.t_no,
-                 input:data.inp
-
-                });
-                }
-                else
+            var resultk = {
+                    result1:data.error,
+                    result:data.oup,
+                    test_case:data.t_no,
+                    input:data.inp
+                    }
+                    results.push(resultk);
+                }        
+            else
                 {
                     var data1=data.output;
                     data1=data1.trim();
-             if(data.oup!=data1)
-                {
-                    count=1;
-                res.render("pages/success_testcase",
-                {
-                 result1:data1,
-                 result:data.oup,
-                 test_case:data.t_no,
-                 input:data.inp
-                });
+            
+                   var resultk = {
+                    result1:data1,
+                    result:data.oup,
+                    test_case:data.t_no,
+                    input:data.inp
+                    }
+                    results.push(resultk);
+                
                 }
+                if(results.length==test.length)
+                {
+                 res.render("pages/success_complete",
+                         {
+                             out:results
+                         })
                 }
-
-
+                
             });
       
     }
@@ -388,112 +461,40 @@ MongoClient.connect(url, function(err, db)
             compiler.compilePythonWithInput(envData , code , input ,sam_oup,test_case_no, function(data){
                 if(data.error)
                 {
-                    count=1;
-                res.render("pages/success_testcase",
-                {
-                 result1:data.error,
-                 result:data.oup,
-                 test_case:data.t_no,
-                 input:data.inp
-                });
+                resultk = {
+                    result1:data.error,
+                                 result:data.oup,
+                                 test_case:data.t_no,
+                                 input:data.inp
+                    }
+                    results.push(resultk);
                 }
                 else
                 {
                     var data1=data.output;
                     data1=data1.trim();
-                    //console.log(data.oup+" "+data.output);   
-                    if(data.oup!=data.output)
-                    { 
-                        count=1;
-                        console.log(count);
-                 res.render("pages/success_testcase",
-                 {
-                  result1:data1,
-                  result:data.oup,
-                  test_case:data.t_no,
-                  input:data.inp
-                 });
-                   }
+                var resultk = {
+                    result1:data1,
+                    result:data.oup,
+                    test_case:data.t_no,
+                    input:data.inp
+                    }
+                    results.push(resultk);
+                   
+                }
+                if(results.length==test.length)
+                {
+                 res.render("pages/success_complete",
+                         {
+                             out:results
+                         })
                 }
             });            
-        
+        }         
     }
-    // if( lang === "CS")
-    // {
-    //         var envData = { OS : "windows"};
-    //         compiler.compileCSWithInput(envData , code , input ,sam_oup, test_case_no,function(data){
-    //             if(data.error)
-    //             {
-    //             res.render("pages/success_testcase",
-    //             {
-    //              result1:data.error,
-    //              result:data.oup,
-    //              test_case:data.t_no,
-    //              input:data.inp
-    //             });
-    //             }
-    //             else
-    //             {
-    //                 if(data.oup!=data.output)
-    //                 { 
-    //              res.render("pages/success_testcase",
-    //              {
-    //               result1:data.output,
-    //               result:data.oup,
-    //               test_case:data.t_no,
-    //               input:data.inp
-    //     });
-    //                }
-    //             }
-    //         });            
-       
-
-    // }
-    // if( lang === "VB")
-    // {
-    //        var envData = { OS : "windows"};
-    //         compiler.compileCSWithInput(envData , code , input ,sam_oup, test_case_no,function(data){
-    //             if(data.error)
-    //             {
-    //             res.render("pages/success_testcase",
-    //             {
-    //              result1:data.error,
-    //              result:data.oup,
-    //              test_case:data.t_no,
-    //              input:data.inp
-    //             });
-    //             }
-    //             else
-    //             {
-    //              if(data.oup!=data.output)
-    //                 { 
-    //              res.render("pages/success_testcase",
-    //              {
-    //               result1:data.output,
-    //               result:data.oup,
-    //               test_case:data.t_no,
-    //               input:data.inp
-    //             });
-    //                }
-    //             }
-    //         });            
-       
-    // }
-             }
-             console.log(count);
-             if(count==0)
-             {
-                console.log("asda");
-              res.render("pages/success_complete",
-              {
-                  
-                   out:test.length  
-             });
-             }
 });
 });
 });
-
 
 /*----------------------------Compilex Started Here---------------------------------------------------*/
 

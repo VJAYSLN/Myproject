@@ -1,0 +1,242 @@
+
+<html>
+    <head>
+        <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+        <style type="text/css">
+            *,
+    *:after,
+    *:before {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    
+    .clearfix:before,
+    .clearfix:after {
+        content: " ";
+        display: table;
+    }
+    
+    .clearfix:after {
+        clear: both;
+    }
+    
+    body {
+        font-family: sans-serif;
+        background: #f6f9fa;
+    }
+    
+    h1 {
+        color: #ccc;
+        text-align: center;
+    }
+    
+    a {
+      color: #ccc;
+      text-decoration: none;
+      outline: none;
+    }
+    
+    /*Fun begins*/
+    .tab_container {
+        width: 90%;
+        margin: 0 auto;
+        padding-top: 70px;
+        position: relative;
+    }
+    
+    input, section {
+      clear: both;
+      padding-top: 10px;
+      display: none;
+    }
+    
+    label {
+      font-weight: 700;
+      font-size: 18px;
+      display: block;
+      float: left;
+      width: 20%;
+      padding: 1.5em;
+      color: #757575;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      background: #f0f0f0;
+    }
+    
+    #tab1:checked ~ #content1,
+    #tab2:checked ~ #content2,
+    #tab3:checked ~ #content3,
+    #tab4:checked ~ #content4,
+    #tab5:checked ~ #content5 {
+      display: block;
+      padding: 20px;
+      background: #fff;
+      color: #999;
+      border-bottom: 2px solid #f0f0f0;
+    }
+    
+    .tab_container .tab-content p,
+    .tab_container .tab-content h3 {
+      -webkit-animation: fadeInScale 0.7s ease-in-out;
+      -moz-animation: fadeInScale 0.7s ease-in-out;
+      animation: fadeInScale 0.7s ease-in-out;
+    }
+    .tab_container .tab-content h3  {
+      text-align: center;
+    }
+    
+    .tab_container [id^="tab"]:checked + label {
+      background: #fff;
+      box-shadow: inset 0 3px #0CE;
+    }
+    
+    .tab_container [id^="tab"]:checked + label .fa {
+      color: #0CE;
+    }
+    
+    label .fa {
+      font-size: 1.3em;
+      margin: 0 0.4em 0 0;
+    }
+    
+    /*Media query*/
+    @media only screen and (max-width: 930px) {
+      label span {
+        font-size: 14px;
+      }
+      label .fa {
+        font-size: 14px;
+      }
+    }
+    
+    @media only screen and (max-width: 768px) {
+      label span {
+        display: none;
+      }
+    
+      label .fa {
+        font-size: 16px;
+      }
+    
+      .tab_container {
+        width: 98%;
+      }
+    }
+    
+    /*Content Animation*/
+    @keyframes fadeInScale {
+      0% {
+          transform: scale(0.9);
+          opacity: 0;
+      }
+      
+      100% {
+          transform: scale(1);
+          opacity: 1;
+      }
+    }
+        </style>
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    
+        <title>PSG CodeZone</title>
+    </head>
+    <body>
+        <h1>PSG CODEZONE</h1>
+            <div class="tab_container">
+                <input id="tab1" type="radio" name="tabs" checked>
+                <label for="tab1"><i class="fa fa-code"></i><span>CHALLENGES</span></label>
+    
+                <input id="tab2" type="radio" name="tabs">
+                <label for="tab2"><i class="fa fa-pencil-square-o"></i><span>PRACTICE</span></label>
+    
+            
+                <section id="content1" class="tab-content">
+                    <h3>Challenges Problems	</h3>
+                      <p>
+                      </p>
+                      
+                </section>
+    
+                <section id="content2" class="tab-content">
+                    <h3>Programming Tutorials And Practice Problems</h3>
+                      <div>
+                  <center>
+                      <b>Mr. X's birthday is in next month. This time he is planning to invite N of his friends. He wants to distribute some chocolates to all of his friends after party. He went to a shop to buy a packet of chocolates.
+                      At chocolate shop, each packet is having different number of chocolates. He wants to buy such a packet which contains number of chocolates, which can be distributed equally among all of his friends.
+                      Help Mr. X to buy such a packet.
+                      
+                      Input:
+                      First line contains T, number of test cases.
+                      Each test case contains two integers, N and M. where is N is number of friends and M is number number of chocolates in a packet.
+                      
+                      Output:
+                      In each test case output "Yes" if he can buy that packet and "No" if he can't buy that packet.
+                      <br>
+                      Constraints:<br>
+                      1<=T<=20<br>
+                      1<=N<=100<br>
+                      1<=M<=10^5<br>
+                         <table>
+                   <th colspan="10">SAMPLE INPUT</th>
+                 <th>SAMPLE OUTPUT</th>
+                           <br><br>
+                           <tr><td colspan="10">
+                               2 
+                           </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    5  14
+                                </td>
+                                <td>
+                                  No
+                                </td>
+                                 </tr>
+                                 <tr>
+                             
+                                    <td>
+                                        3  21
+                                    </td>
+                                    <td>
+                                      Yes
+                                    </td>
+                                   
+                                     </tr>
+      
+                         </table>
+                      <form id="myform" name="myform" method="post" action="compilecode">
+                      <h3>Code</h3>
+                      <textarea rows="13" cols="100" id="code" name="code" ></textarea> 
+                      <br/>
+                      <h3>Input</h3>
+                      <textarea rows="10" cols="100" id="input" name="input" ></textarea> 
+                      <br/>
+                    
+                      Language : <select name="lang">
+                        <option value="C">C</option>
+                        <option value="C++">C++</option>
+                        <option value="Java">Java</option>  
+                        <option value="Python">Python</option> 
+                       
+                      
+                      </select>
+                      Compile With Input : 
+                      <input style="display: unset" type="radio" name="inputRadio" id="inputRadio" value="true"/>yes
+                      <input style="display: unset" type="radio" name="inputRadio" id="inputRadio" value="false"/>No
+                      <br />
+                      <br>
+                      <input type="submit" value="submit"  name="submit" style="display: unset" />
+                      </form>
+                    </center>
+              </div>	
+                  
+                </section>
+    
+            
+            </div>
+    
+    </body>
+    </html>

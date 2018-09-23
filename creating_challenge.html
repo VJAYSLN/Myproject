@@ -1,0 +1,168 @@
+<style>
+body{
+	margin: 0px;
+
+}
+.menu{
+	background : #000;
+	color: #fff;
+	padding: 10px;
+}
+.menu a{
+	color: #fff;
+	text-decoration: none;
+	padding: 10px;
+}
+
+.question_container{
+
+	padding: 10px;
+}
+.question_container input[type=text],textarea{
+	border: 1px solid #000;	
+	width: 500px;
+	font-size: 16px;
+	padding: 6px;
+}
+
+.question_container input[type=button]{
+	display: block;
+	padding: 10px;
+	color: #fff;
+	border: none;
+	background : #888;
+}
+
+#test_case{
+	box-shadow: 0px 0px 2px rgba(0,0,0,.3);
+	position: fixed;
+	z-index: 99;
+	display: none;
+	vertical-align: center;
+	left: 350px;
+	width: 500px;
+	background: #888888;
+}
+#test_case *{
+	padding: 10px;
+}
+
+#test_case div{
+
+}
+#test_case input{
+	max-width: 300px;
+	border: 2px solid transparent;
+}
+#test_case input[type=button]{
+	background: #333;
+	display: inline;
+	margin: 0px 6px;
+}
+#test_case h4{
+	display: inline;
+}
+.question_container input:hover,textarea:hover{
+	border: 1px solid skyblue;	
+}
+	#blur{
+		background: rgba(0,0,0,.6);
+		width: 100%;
+		height: 100%;
+		z-index : 90;
+		display: none;
+		position: fixed;
+		top: 0px;
+		left: 0px;
+	}
+
+
+	#testCaseContainer{
+		background: #0f0f0f;
+		padding: 0px;
+		left: 600px;
+		top: 140px;
+	}
+	.currentTestCase{
+		margin: 20px;
+	}
+</style>
+<div class="menu">
+	<a href="/" style="font-size: 20px;color:coral;">PSG Code Zone</a>
+	<a href="/ques_tab" style="font-size: 15px;color:darkturquoise;">Home</a>
+</div>
+<form method='post' action="/admin2">
+<div class="question_container">
+	<div style="float:left;">
+		<h4>Question Name</h4>
+		<input type = "text" placeholder="Question Name" name='qname'>
+	
+		<br>
+		<h4>Description</h4><br>
+		<textarea style="height: 300px;" name='qdesc'></textarea>
+	
+		<h4>Constraints</h4><br>
+		<textarea style="height: 150px;" name='qconst'></textarea>
+		<h4>Sample Input</h4><br>
+		<textarea style='height:60px;' name='qinp'></textarea>
+		<h4>Sample Output</h4><br>
+		<textarea style='height:60px;' name='qoup'></textarea>
+
+	</div>
+	<div style="width: 50%;">
+
+		<input onclick="addTest()" type="button" value="Add Test" style="border: 2px dotted #000;float: right;padding: 10px;display: inline; margin: 10px;background: rgba(111,111,111,.6);padding: 10px 40px;" />
+
+		<div id="blur"></div>
+		<div id="test_case">
+			<div style="background: #2aabd2;width: 96%;color : #fff;padding: 10px;">Add test case</div>
+			<div style="padding: 10px;">
+				<table class="currentTestCase" name="tab_value">
+					<tr>
+						<th><h4>Input</h4></th>
+						<th><input type = "text" placeholder="Input" name="inp" onfocus="clearContents(this);"/></th>
+						<tr>
+						<th><h4>Output</h4></th>
+						<th><input type = "text" placeholder="Output" name="oup" onfocus="clearContents(this);"/></th>
+					</tr>
+				</table>
+				<input style="margin-left: 30px;" onclick="createTestCase()" type="button" value="Submit"/>
+				<input type="button" onclick="hideTestcase()" value="cancel"/>
+			</div>
+		</div>
+		<div id="testCaseContainer" style="font-size: 17px;position: absolute;background: #ddd;">
+
+		</div>
+	<br><br>
+	
+	</div>
+	<center><input type="submit" value='Add Question Database' style="background-color: darkcyan" ></center>
+</div>
+</form>
+<script>
+	function addTest(){
+	    var testCase = document.getElementById("test_case");
+	    testCase.style.display = "block";
+	    var blur = document.getElementById("blur");
+	    blur.style.display = "block";
+	}
+	function createTestCase(){
+		var testCaseContainer = document.getElementById("testCaseContainer");
+		var currentTestCase = document.getElementsByClassName("currentTestCase")[0].cloneNode(true);
+        testCaseContainer.appendChild(currentTestCase);
+        hideTestcase();
+	}
+	function hideTestcase() {
+		var tc = document.getElementById("test_case");
+		var blur = document.getElementById("blur");
+		hideElement(tc);
+		hideElement(blur);
+    }
+	function hideElement(element){
+	    element.style.display = "none";
+	}
+	function clearContents(element) {
+  element.value = '';
+}
+    
+</script>

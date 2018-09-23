@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Question Tabs</title>  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+	  <link rel="stylesheet" href="/ques_tab_css">
+	  <script type='text/javascript' src="/amazon2"></script>
+	  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.248.1.min.js"></script>
+</head>
+<body onload="check()">
+		<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
+				  <div class="navbar-header">
+					<a class="navbar-brand" href="#">PSG CodeZone</a>
+				  </div>		  
+				  <ul class="nav navbar-nav navbar-right">
+					<li id="balapandi"><a href="#"><span class="glyphicon glyphicon-user"></span> User</a></li>
+					<li><a onclick="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+				  </ul>
+				</div>
+		</nav>	  
+  <div class="tabs">
+	<label class="tabs-item">
+		<input class="tabs-indicator" type="radio" name="test1" hidden />
+		<div class="tabs-caption">Tab caption #1</div>
+		<div class="tabs-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, vero.</div>
+	</label>
+	<label class="tabs-item">
+		<div class="tabs-caption">Tab caption #2</div>
+		<input class="tabs-indicator" type="radio" name="test1" hidden />
+		<div class="tabs-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam, excepturi!</div>
+	</label>
+	<label class="tabs-item">
+		<div class="tabs-caption">Tab caption #3</div>
+		<input class="tabs-indicator" type="radio" name="test1" hidden />
+		<div class="tabs-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, sapiente?</div>
+	</label>
+	<label class="tabs-item">
+		<div class="tabs-caption">Tab caption #4</div>
+		<input class="tabs-indicator" type="radio" name="test1" hidden />
+		<div class="tabs-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, impedit?</div>
+	</label>
+	<label class="tabs-item">
+		<div class="tabs-caption">Tab caption #5</div>
+		<input class="tabs-indicator" type="radio" name="test1" hidden />
+		<div class="tabs-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias, quis!</div>
+	</label>
+</div>
+</body>
+</html>
+<script src="/amazon4"></script>

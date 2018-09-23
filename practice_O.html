@@ -1,0 +1,118 @@
+<html>
+    <head>       
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    
+      <link href="/IndexO_css" rel="stylesheet">
+    <title>PSG CodeZone</title>
+    
+  
+  </head>
+    <body>
+        <h1>PSG CodeZone</h1>
+            <!-- <div class="tab_container">
+    
+                <input id="tab2" type="radio" name="tabs" checked>
+                <label for="tab2"><i class="fa fa-pencil-square-o"></i><span>CHALLENGES</span></label>
+                <section id="content2" class="tab-content">
+             -->
+
+                    <h1>Challenges Problems	</h1>
+                    <div name='question_name'>
+                      <textarea style="height: 40px; font-size:25px;width:100% ; border:none; text-align:center; font-weight: bold;resize: none " name='qdesc' id='qdesc' disabled>
+                         <!-- <%= result.q_name%> -->
+                         hai
+                      </textarea>
+                    </div>
+                      
+                    <div name='question_desc'>
+                      <h2 style="color:mediumvioletred; text-align: left;font-style: italic">Explanation</h3>
+                      <textarea style="height: 300px; font-size:17px; width:100% ; border:none; text-align:justify; resize: none;padding: 10px;text-align: left" name='qdesc' id='qdesc' disabled>
+                        <!-- <%= result.q_desc%> -->
+                        content
+                      </textarea>
+                    </div>
+                    <div name='question_const'>
+                        <h2 style="color:mediumvioletred; text-align: left;font-style: italic">Constraints</h3>
+                      <textarea style="height:150px; font-size:17px; width:100%; border:none; text-align: justify; resize: none;padding: 35px;text-align: left" name='qconst' disabled>
+                        <!-- <%= result.q_const%> -->
+                        Constraints
+                      </textarea>
+                    </div>
+                    <div name='sam_io'>
+                      <table>
+                       <tr style='padding: 100px;'>
+                         <th >
+                          Sample Input
+                          </th>
+                          <th>
+                              Sample Output
+                          </th>
+                          </tr style="padding:100px";>   
+                           <td >
+                              <textarea style="height:100px; font-size:17px; border:none; text-align: justify;resize: none;padding: 10px;text-align: left" name='qinp' disabled>
+                                <!-- <%= result.q_inp%> -->
+                                input    
+                            </textarea>              
+                           </td>
+                           <td>
+                              <textarea style="height:100px; border:none; font-size:17px; text-align: justify; resize: none;padding: 10px;text-align: left" name='qinp' disabled>
+                                <!-- <%= result.q_oup%> -->
+                                output
+                              </textarea>       
+                           </td>
+                         </th>
+            
+            
+                       </tr> 
+                      </table>
+                    <br>
+                    <br>
+                    <br>
+                                  <form id="myform" name="myform" method="post" action="compil">
+                                  <h3 style='text-align: right'>Language:<select name="lang" style="width:100px">
+                            
+                                      <option value="C">C</option>
+                                      <option value="C++">C++</option>
+                                      <option value="Java">Java</option>  
+                                      <option value="Python">Python</option> 
+                                     
+                                    
+                                    </select></h3>
+                              <h3>Code</h3>
+                              <textarea style='width:100%; font-size:15px; background: darkblue; color:azure;' rows="20" cols="100" id="code" name="code" ></textarea> 
+                              <br/><br/><br/>
+                              <h3 style='text-align: left'>Custom_Input</h3>
+                              <textarea style='background: darkslategray; font-size:15px;color: white;' rows="8" cols="80" id="input" name="input" ></textarea> 
+                              <br/>
+                               <br>
+                              <br>
+            
+                              <h3 style='text-align: justify; font-size: 20px; background: rgba(111,111,111,0.7p) ;color:darkcyan'> Compile With Input : 
+                              <input style="display: unset" type="radio" name="inputRadio" id="inputRadio" value="true"/>yes
+                              <input style="display: unset" type="radio" name="inputRadio" id="inputRadio" value="false" checked="true" />No
+                            </h3>
+                              <br />
+                              <br>
+                            <h3 style='text-align:right; font-weight: bold'><input type="submit" value="Compile" name="submit" style="display: unset; text-align:center;box-shadow:navy;font-size:20px; color:indigo ;background:lightcoral; border-radius: 3px" /></h3>
+                              </form>
+                          </div>	
+        <!--                   
+                                     <h3>OUTPUT</h3>
+                                     <textarea style='width:100%; font-size:15px; background: darkblue; color:azure; text-align: justify; padding: 50px' rows="15" cols="100" id="output" name="output" >
+                                     
+                                     </textarea> 
+                                    -->
+            
+                    
+                   
+            
+       
+    </body>
+</html>
